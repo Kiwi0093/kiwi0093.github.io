@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>PF被打掛</title>
+      <link href="/2021/09/03/2021090301/"/>
+      <url>/2021/09/03/2021090301/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h1><p>最近不知道是不是自動追劇用的太爽,常常被家人抱怨家裡的網路掛掉了</p><span id="more"></span><h1 id="症狀說明"><a class="markdownIt-Anchor" href="#症狀說明"></a> 症狀說明</h1><p>其實也沒什麼好特別說明的,就是家裡的gateway掛掉,查看的結果就是出現了</p><h3 id="pf-state-reach-limit"><a class="markdownIt-Anchor" href="#pf-state-reach-limit"></a> PF state reach limit</h3><p>上網看了一下大致上的理由就是PF的entry爆掉了所以PF不會動了</p><h1 id="對策"><a class="markdownIt-Anchor" href="#對策"></a> 對策</h1><h2 id="基本對策"><a class="markdownIt-Anchor" href="#基本對策"></a> 基本對策</h2><p>之前曾經詢問過師匠,他的處理方式是用crontab設定每天固定一個時間重開機,並且利用這個機制它順便讓FreeBSD自動update</p><p>身為弟子的我當然也照抄了這個作法<ruby><font size=+2 color=darkgreen><del>就是這個光～～</del></font><rp>(</rp><rt><font size=+1 color=darkred>しかし〜〜</font></rt><rp>)</rp></ruby>但是昨天下午重開完沒多久就破功了</p><h2 id="sshguard"><a class="markdownIt-Anchor" href="#sshguard"></a> sshguard</h2><p>好啦,其實這個很久之前從師匠那裡抄來的PF設定檔裡面就有了,師匠需要定期重開的理由也是因為這個table會爆掉(可見<ruby><font size=+2 color=darkgreen><del>亂try ssh的人</del></font><rp>(</rp><rt><font size=+1 color=darkred>Ass hole</font></rt><rp>)</rp></ruby>有多少)</p><p>結果我定睛一看,我根本就沒裝sshgurd…所以不要說block混蛋的table大到爆掉,我根本就是沒有建立ban的table,所以會爆的更快…</p><h2 id="bt-自動抓劇"><a class="markdownIt-Anchor" href="#bt-自動抓劇"></a> BT &amp;自動抓劇</h2><p>其實說來說去我也不知道用這個玩意會不會有影響,不過我的內心傾向於沒影響,畢竟我之前也是卯起來用其他的P2P在抓東西,也沒看它爆過…</p><h1 id="結論"><a class="markdownIt-Anchor" href="#結論"></a> 結論</h1><p>簡單的說就是只能再觀察…看看現在的對策是不是真的有效</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Life </tag>
+            
+            <tag> Server </tag>
+            
+            <tag> FreeBSD </tag>
+            
+            <tag> Network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Integrate Arch Linux into Chrome OS</title>
       <link href="/2021/08/24/2021082401/"/>
       <url>/2021/08/24/2021082401/</url>
