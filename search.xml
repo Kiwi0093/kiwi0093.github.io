@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>雜談 - 2025/01/03</title>
+      <link href="/2025/01/03/2025010301/"/>
+      <url>/2025/01/03/2025010301/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2025年了,雖說沒什麼好感嘆的,不過最近也的確改了一些東西</p><span id="more"></span><h1 id="BT-over-VPN"><a href="#BT-over-VPN" class="headerlink" title="BT over VPN"></a>BT over VPN</h1><p><code>有同事被版權蟑螂訴訟後賠了一筆錢...</code><br>這件事其實或多或少都在我的心裡留下了一個擔心的種子…所以當我看到<code>Ivon的Blog</code>內提到的Gluetun相關介紹<br>我就蠢蠢欲動</p><h2 id="實作"><a href="#實作" class="headerlink" title="實作"></a>實作</h2><p>我已經Update到<a href="https://kiwi0093.github.io/wiki/wiki/VM&Container/Service%20Container/Home%20Lab/3-auto-chasing-drama/">我的Wiki</a>去了,有興趣的同學可以參考一下小弟的作法</p><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>目前看起來算是會動,但是看起來qbittorrent的效率不是很好,加上我目前沒有成功弄出<code>port forwarding</code>的功能，所以我其實是有在考慮是不是要花錢買ProtonVPN的服務….<br>老實說ProtonVPN的方案跟價格(VPN Plus 訂兩年方案 4.99USD&#x2F;month)其實看起來還是很有搞頭的樣子..</p><h1 id="V2Ray-on-Cloudflare"><a href="#V2Ray-on-Cloudflare" class="headerlink" title="V2Ray on Cloudflare"></a>V2Ray on Cloudflare</h1><p>離開強國後其實我就沒花多少心思跟技能點數在翻牆的梯子上面了….<br>不過上次看Youtube的時候發現原來可以透過免費的<code>cloudflare worker</code>架設serverless的V2ray server來用,而且還是多ip可以refresh更換的那種…<br>我只能說真的太佛心啦…..</p><h2 id="Edgetunnel"><a href="#Edgetunnel" class="headerlink" title="Edgetunnel"></a>Edgetunnel</h2><p><a href="https://github.com/cmliu/edgetunnel">Edgetunnel from cmliu</a></p><p>其實在找到這個專案的瞬間機呼救完成了架設的90%,剩下的就是要有<code>cloudflare</code>的帳號(對於已經自己架過V2Ray web socket over TLS的人來說肯定有)<br>以及自己託管在cloudflare的Domain(其實沒有應該也可以因為CF worker會自動產生一個<code>worker_name.User_name.workers.dev</code>之類的網址給你<br>不過…身為一個自己架過V2Ray web socket over TLS的人來說…託管在CF的Domain可以說是標配….所以這些都不會是什麼問題才對,除非是什麼都沒有要0開始的人<br>那可能還真的要花點功夫去弄個Domain來…</p><p>接著就是開個免費的worker專案然後把Github內的code貼到worker的code去,然後去<a href="https://www.uuidgenerator.net/">online UUID generator</a>弄個看的順眼的UUID<br>塞進第四行的<code>let userID = &#39;&lt;UUID you like&gt;&#39;;</code>然後deploy就好了</p><p>接著就去worker的設定 –&gt; 網域和路由裡面設定一下你的domain,或是就認命用workers.dev裡的link(不過我只是測試可以連上,不知道真的用了會出什麼事情)<br>然後就去<code>https://your.domain.or.workers.dev/UUID</code>就可以看到類似下面的畫面</p><p><img src="https://raw.githubusercontent.com/Kiwi0093/graph/master/img/%E8%9E%A2%E5%B9%95%E6%93%B7%E5%8F%96%E7%95%AB%E9%9D%A2%202025-01-03%20171436.png"></p><h2 id="Client"><a href="#Client" class="headerlink" title="Client"></a>Client</h2><h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p>基本上<code>V2RayN</code>就可以用了,只要導入群組之後refresh後就可以用了</p><h3 id="Android"><a href="#Android" class="headerlink" title="Android"></a>Android</h3><p>可惜的是<code>V2Rayng</code>不支援群組訂閱的功能,所以我就只能另外測試了<br><a href="https://github.com/MetaCubeX/ClashMetaForAndroid">ClashMeta for Android</a><br>我是用<code>Obtainium</code>直接從Github安裝的..<br>詳細的設定方法…懶的寫了..基本上會用<code>V2rayng</code>的人就會自己設定<br>從URL設定,把<code>https://your.domain.or.workers.dev/UUID</code>填入URL就好了…..</p><h3 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h3><p>沒硬體…所以沒測試..連有硬體的朋友都因他遠在強國..所以就不測試了..太麻煩了</p><h3 id="MacOS"><a href="#MacOS" class="headerlink" title="MacOS"></a>MacOS</h3><p>你覺得連iOS硬體都沒有的人會有MacOS硬體？？？(要是真的有我大概也拿去裝Asahi Linux了吧….)</p><h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><ul><li><del>果然人不在強國境內,沒有被<code>GFW</code>壓迫的情境下真的很難激發我測試一堆東西的熱情</del>沒有強國的網路環境所以沒辦法針對江蘇的網路去作<code>優選IP</code>…</li><li>同上,所以我其實不知道弄好的node到底效果怎樣….只能看用戶反饋囉</li><li>之前就覺得在強國生活得把一堆技能點數拿來點梯子,雖說技術就是技術..學會了多少都有成就感尤其是很容易學以致用的情況下更容易有成就感..不過沒什麼必要的條件下回頭看真的很浪費技能點數….</li><li>看著現在在賣的VPN一堆都用wireguard protocol但是強國的梯子卻幾乎都是偽裝為web socket的socks server…真的覺得很唏噓,尤其是我現在每天都需要用wireguard連回家<br>對於wireguard容易架設,效率又超高真的覺得蠻唏噓的….大概只能無奈人不能選擇出生…</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> V2ray </tag>
+            
+            <tag> Network </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Domain遷移</title>
       <link href="/2024/12/04/2024120401/"/>
       <url>/2024/12/04/2024120401/</url>
